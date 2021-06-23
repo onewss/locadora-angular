@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header">
+    <h1>
+      Locacaos
+    </h1>
+  </div>
+
+  <br>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let locacao"> {{locacao.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeCliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let locacao"> {{locacao.cliente.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="modeloVeiculo">
+        <th mat-header-cell *matHeaderCellDef> Modelo </th>
+        <td mat-cell *matCellDef="let locacao"> {{locacao.veiculo.modelo.mome}} </td>
+      </ng-container>
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="dtHrInicioReserva">
+        <th mat-header-cell *matHeaderCellDef> Dt Inicio </th>
+        <td mat-cell *matCellDef="let locacao"> {{locacao.dtHrInicioReserva}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="valorFinal">
+        <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+        <td mat-cell *matCellDef="let locacao"> {{locacao.valorFinal}} </td>
+      </ng-container>
+
+      <!-- Ações -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef> AÇÕES </th>
+        <td mat-cell *matCellDef="let locacao">
+          <div>
+            <button mat-button color="primary" (click)="edit(locacao)">Editar</button>
+            <button mat-button color="warn" (click)="delete(locacao)">Excluir</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <hr>
+    <button mat-stroked-button color="primary" (click)="save()">Salvar</button>
+  </div>
+</div>

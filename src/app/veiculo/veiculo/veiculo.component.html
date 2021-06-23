@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <h1>
+      Veiculos
+    </h1>
+  </div>
+
+  <br>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let veiculo"> {{veiculo.id}} </td>
+      </ng-container>
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef> MARCA </th>
+        <td mat-cell *matCellDef="let veiculo"> {{veiculo.marca.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="modelo">
+        <th mat-header-cell *matHeaderCellDef> MODELO </th>
+        <td mat-cell *matCellDef="let veiculo"> {{veiculo.modelo.nome}} </td>
+      </ng-container>
+
+      <!-- Ações -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef> AÇÕES </th>
+        <td mat-cell *matCellDef="let veiculo">
+          <div>
+            <button mat-button color="primary" (click)="edit(veiculo)">Editar</button>
+            <button mat-button color="warn" (click)="delete(veiculo)">Excluir</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <hr>
+    <button mat-stroked-button color="primary" (click)="save()">Salvar</button>
+  </div>
+</div>
